@@ -16,6 +16,8 @@
 		896B51B11C7A57AA007EEDED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 896B51AF1C7A57AA007EEDED /* LaunchScreen.storyboard */; };
 		896B51BC1C7A57AA007EEDED /* Color_CollectingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896B51BB1C7A57AA007EEDED /* Color_CollectingTests.swift */; };
 		896B51C71C7A57AA007EEDED /* Color_CollectingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896B51C61C7A57AA007EEDED /* Color_CollectingUITests.swift */; };
+		896B51D51C7A925C007EEDED /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896B51D41C7A925C007EEDED /* TitleScene.swift */; };
+		896B51D71C7A9274007EEDED /* TitleScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 896B51D61C7A9274007EEDED /* TitleScene.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		896B51C21C7A57AA007EEDED /* Color CollectingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Color CollectingUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		896B51C61C7A57AA007EEDED /* Color_CollectingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color_CollectingUITests.swift; sourceTree = "<group>"; };
 		896B51C81C7A57AA007EEDED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		896B51D41C7A925C007EEDED /* TitleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleScene.swift; sourceTree = "<group>"; };
+		896B51D61C7A9274007EEDED /* TitleScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TitleScene.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,8 @@
 				896B51AD1C7A57AA007EEDED /* Assets.xcassets */,
 				896B51AF1C7A57AA007EEDED /* LaunchScreen.storyboard */,
 				896B51B21C7A57AA007EEDED /* Info.plist */,
+				896B51D41C7A925C007EEDED /* TitleScene.swift */,
+				896B51D61C7A9274007EEDED /* TitleScene.sks */,
 			);
 			path = "Color Collecting";
 			sourceTree = "<group>";
@@ -238,6 +244,7 @@
 				896B51A51C7A57AA007EEDED /* GameScene.sks in Resources */,
 				896B51B11C7A57AA007EEDED /* LaunchScreen.storyboard in Resources */,
 				896B51AE1C7A57AA007EEDED /* Assets.xcassets in Resources */,
+				896B51D71C7A9274007EEDED /* TitleScene.sks in Resources */,
 				896B51AC1C7A57AA007EEDED /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,6 +273,7 @@
 				896B51A71C7A57AA007EEDED /* GameScene.swift in Sources */,
 				896B51A91C7A57AA007EEDED /* GameViewController.swift in Sources */,
 				896B51A31C7A57AA007EEDED /* AppDelegate.swift in Sources */,
+				896B51D51C7A925C007EEDED /* TitleScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
