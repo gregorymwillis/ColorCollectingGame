@@ -23,7 +23,7 @@ class TitleScene: SKScene {
     
     func setUpText() {
         playButton = UIButton(frame: CGRect(x: 100, y: 100, width: 1100, height: 150))
-        playButton.center = CGPoint(x: view!.frame.width / 2, y: 1100)
+        playButton.center = CGPoint(x: view!.frame.width / 2, y: view!.frame.height * 0.8)
         playButton.titleLabel?.font = UIFont(name: "Futura", size: 80)
         playButton.setTitle("Play", forState: UIControlState.Normal)
         playButton.setTitleColor(offBlackColor, forState: UIControlState.Normal)
@@ -33,7 +33,7 @@ class TitleScene: SKScene {
         
         gameTitle = UILabel(frame: CGRect(x: 0, y: 0, width: view!.frame.width, height: view!.frame.height * 0.2))
         gameTitle?.textColor = offWhiteColor
-        gameTitle?.font = UIFont(name: "Futura", size: 100)
+        gameTitle?.font = UIFont(name: "Futura", size: view!.frame.width * 0.1)
         gameTitle?.textAlignment = .Center
         gameTitle?.text = "COLOR CATCH HD"
         gameTitle?.backgroundColor = offBlackColor
@@ -41,14 +41,13 @@ class TitleScene: SKScene {
     }
     
     func playTheGame() {
-        self.view?.presentScene(GameScene(), transition: SKTransition.crossFadeWithDuration(1.0))
         playButton.removeFromSuperview()
         gameTitle.removeFromSuperview()
         
         if let scene = GameScene(fileNamed: "GameScene") {
             let skView = self.view! as SKView
             skView.ignoresSiblingOrder = true
-            scene.scaleMode = .AspectFill
+            scene.scaleMode = .ResizeFill
             skView.presentScene(scene)
         }
     }

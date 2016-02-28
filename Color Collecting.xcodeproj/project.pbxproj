@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8920C1A91C83B5420054EB2A /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8920C1A81C83B5410054EB2A /* Global.swift */; };
 		896B51A31C7A57AA007EEDED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896B51A21C7A57AA007EEDED /* AppDelegate.swift */; };
 		896B51A51C7A57AA007EEDED /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 896B51A41C7A57AA007EEDED /* GameScene.sks */; };
 		896B51A71C7A57AA007EEDED /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896B51A61C7A57AA007EEDED /* GameScene.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8920C1A81C83B5410054EB2A /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		896B519F1C7A57AA007EEDED /* Color Collecting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Color Collecting.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		896B51A21C7A57AA007EEDED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		896B51A41C7A57AA007EEDED /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				896B51B21C7A57AA007EEDED /* Info.plist */,
 				896B51D41C7A925C007EEDED /* TitleScene.swift */,
 				896B51D61C7A9274007EEDED /* TitleScene.sks */,
+				8920C1A81C83B5410054EB2A /* Global.swift */,
 			);
 			path = "Color Collecting";
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				TargetAttributes = {
 					896B519E1C7A57AA007EEDED = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = E7CR6YGA9E;
 					};
 					896B51B61C7A57AA007EEDED = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -273,6 +277,7 @@
 				896B51A71C7A57AA007EEDED /* GameScene.swift in Sources */,
 				896B51A91C7A57AA007EEDED /* GameViewController.swift in Sources */,
 				896B51A31C7A57AA007EEDED /* AppDelegate.swift in Sources */,
+				8920C1A91C83B5420054EB2A /* Global.swift in Sources */,
 				896B51D51C7A925C007EEDED /* TitleScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,10 +420,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Color Collecting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.WillisProgramming.Color-Collecting";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.WillisProgramming.Color-Catch-HD";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -426,10 +434,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Color Collecting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.WillisProgramming.Color-Collecting";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.WillisProgramming.Color-Catch-HD";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -502,6 +513,7 @@
 				896B51CD1C7A57AA007EEDED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		896B51CE1C7A57AA007EEDED /* Build configuration list for PBXNativeTarget "Color CollectingTests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +522,7 @@
 				896B51D01C7A57AA007EEDED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		896B51D11C7A57AA007EEDED /* Build configuration list for PBXNativeTarget "Color CollectingUITests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +531,7 @@
 				896B51D31C7A57AA007EEDED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -11,8 +11,7 @@ import SpriteKit
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var player = SKSpriteNode?()
-    var darkBlock = SKSpriteNode?()
-    var lightBlock = SKSpriteNode?()
+    
     var mainLabel = SKLabelNode?()
     var scoreLabel = SKLabelNode?()
     var lightBlockSpeed = 4.0 // Speed of block across screen
@@ -20,9 +19,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var blockSpawnTime = 0.3 // Speed of how fast blocks spawn
     var isAlive = true
     var score = 0
-    var offWhiteColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0)
-    var offBlackColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1.0)
-    var grayBlueColor = UIColor(red: (60/255), green: (100/255), blue: (160/255), alpha: 1.0)
+    
     var blockSize = CGSize(width: 20, height: 20)
     var dragTouchLocation : CGPoint?
     var isLightColor = true
@@ -34,7 +31,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         physicsWorld.contactDelegate = self
-        backgroundColor = grayBlueColor
+        backgroundColor = ColorProvider.grayBlueColor
         spawnPlayer()
         spawnMainLabel()
         spawnScoreLabel()
@@ -87,13 +84,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
 // Spawns the player
     func spawnPlayer() {
-        player = SKSpriteNode(color: offWhiteColor, size: CGSize(width: 50, height: 50))
+        player = SKSpriteNode(color: ColorProvider.offWhiteColor, size: CGSize(width: 50, height: 50))
         player?.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetHeight(self.frame) * 0.2)
         player?.physicsBody = SKPhysicsBody(rectangleOfSize: player!.size)
         player?.physicsBody?.affectedByGravity = false
         player?.physicsBody?.allowsRotation = false
-        player?.physicsBody?.categoryBitMask = physicsCategory.player
-        player?.physicsBody?.contactTestBitMask = physicsCategory.darkBlock
+        player?.physicsBody?.categoryBitMask = PhysicsCategory.player
+        player?.physicsBody?.contactTestBitMask = PhysicsCategory.darkBlock
         player?.physicsBody?.dynamic = false
         player?.name = "player"
         
@@ -102,52 +99,52 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
    
 // Spawns a dark block
     func spawnDarkBlock() {
-        darkBlock = SKSpriteNode(color: offBlackColor, size: blockSize)
-        darkBlock?.position.x = CGFloat(arc4random_uniform(700) + 250)
-        darkBlock?.position.y = CGFloat(CGRectGetHeight(self.frame))
+        let darkBlock = SKSpriteNode(color: ColorProvider.offBlackColor, size: blockSize)
+        darkBlock.position.x = random() * CGRectGetMaxX(frame)
+        darkBlock.position.y = CGFloat(CGRectGetHeight(self.frame))
         
-        darkBlock?.physicsBody = SKPhysicsBody(rectangleOfSize: darkBlock!.size)
-        darkBlock?.physicsBody?.affectedByGravity = false
-        darkBlock?.physicsBody?.allowsRotation = false
-        darkBlock?.physicsBody?.categoryBitMask = physicsCategory.darkBlock
-        darkBlock?.physicsBody?.contactTestBitMask = physicsCategory.player
-        darkBlock?.physicsBody?.dynamic = true
-        darkBlock?.name = "darkBlock"
+        darkBlock.physicsBody = SKPhysicsBody(rectangleOfSize: darkBlock.size)
+        darkBlock.physicsBody?.affectedByGravity = false
+        darkBlock.physicsBody?.allowsRotation = false
+        darkBlock.physicsBody?.categoryBitMask = PhysicsCategory.darkBlock
+        darkBlock.physicsBody?.contactTestBitMask = PhysicsCategory.player
+        darkBlock.physicsBody?.dynamic = true
+        darkBlock.name = "darkBlock"
         
         let moveDown = SKAction.moveToY(-100, duration: darkBlockSpeed)
         let destroy = SKAction.removeFromParent()
         let sequence = SKAction.sequence([moveDown, destroy])
-        darkBlock?.runAction(sequence)
-        addChild(darkBlock!)
+        darkBlock.runAction(sequence)
+        addChild(darkBlock)
     }
     
 // Spawns a light block
     func spawnLightBlock() {
-        lightBlock = SKSpriteNode(color: offWhiteColor, size: blockSize)
-        lightBlock?.position.x = CGFloat(arc4random_uniform(700) + 250)
-        lightBlock?.position.y = CGFloat(CGRectGetHeight(self.frame) + 100)
+        let lightBlock = SKSpriteNode(color: ColorProvider.offWhiteColor, size: blockSize)
+        lightBlock.position.x = random() * CGRectGetMaxX(frame)
+        lightBlock.position.y = CGFloat(CGRectGetHeight(self.frame) + 100)
         
-        lightBlock?.physicsBody = SKPhysicsBody(rectangleOfSize: lightBlock!.size)
-        lightBlock?.physicsBody?.affectedByGravity = false
-        lightBlock?.physicsBody?.allowsRotation = false
-        lightBlock?.physicsBody?.categoryBitMask = physicsCategory.lightBlock
-        lightBlock?.physicsBody?.contactTestBitMask = physicsCategory.player
-        lightBlock?.physicsBody?.dynamic = true
-        lightBlock?.name = "lightBlock"
+        lightBlock.physicsBody = SKPhysicsBody(rectangleOfSize: lightBlock.size)
+        lightBlock.physicsBody?.affectedByGravity = false
+        lightBlock.physicsBody?.allowsRotation = false
+        lightBlock.physicsBody?.categoryBitMask = PhysicsCategory.lightBlock
+        lightBlock.physicsBody?.contactTestBitMask = PhysicsCategory.player
+        lightBlock.physicsBody?.dynamic = true
+        lightBlock.name = "lightBlock"
 
 
         let moveDown = SKAction.moveToY(-100, duration: lightBlockSpeed)
         let destroy = SKAction.removeFromParent()
         let sequence = SKAction.sequence([moveDown, destroy])
-        lightBlock?.runAction(sequence)
-        addChild(lightBlock!)
+        lightBlock.runAction(sequence)
+        addChild(lightBlock)
     }
     
 // Spawns the main label
     func spawnMainLabel() {
         mainLabel = SKLabelNode(fontNamed: "Futura")
         mainLabel?.fontSize = 80
-        mainLabel?.fontColor = offWhiteColor
+        mainLabel?.fontColor = ColorProvider.offWhiteColor
         mainLabel?.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetHeight(self.frame) * 0.7)
         mainLabel?.text = "Start"
         addChild(mainLabel!)
@@ -157,7 +154,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func spawnScoreLabel() {
         scoreLabel = SKLabelNode(fontNamed: "Futura")
         scoreLabel?.fontSize = 50
-        scoreLabel?.fontColor = offWhiteColor
+        scoreLabel?.fontColor = ColorProvider.offWhiteColor
         scoreLabel?.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame) * 0.1)
         scoreLabel?.text = "Score: \(score)"
         addChild(scoreLabel!)
@@ -212,15 +209,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func changeToDarkColor() {
-        player?.color = offBlackColor
-        scoreLabel?.fontColor = offBlackColor
-        mainLabel?.fontColor = offBlackColor
+        player?.color = ColorProvider.offBlackColor
+        scoreLabel?.fontColor = ColorProvider.offBlackColor
+        mainLabel?.fontColor = ColorProvider.offBlackColor
     }
     
     func changeToLightColor() {
-        player?.color = offWhiteColor
-        scoreLabel?.fontColor = offWhiteColor
-        mainLabel?.fontColor = offWhiteColor
+        player?.color = ColorProvider.offWhiteColor
+        scoreLabel?.fontColor = ColorProvider.offWhiteColor
+        mainLabel?.fontColor = ColorProvider.offWhiteColor
     }
     
     func countDownTimer() {
@@ -240,11 +237,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let firstBody : SKPhysicsBody = contact.bodyA
         let secondBody : SKPhysicsBody = contact.bodyB
         
-        if ((firstBody.categoryBitMask == physicsCategory.player) && (secondBody.categoryBitMask == physicsCategory.darkBlock) || (firstBody.categoryBitMask == physicsCategory.darkBlock) && (secondBody.categoryBitMask == physicsCategory.player)) {
+        if ((firstBody.categoryBitMask == PhysicsCategory.player) && (secondBody.categoryBitMask == PhysicsCategory.darkBlock) || (firstBody.categoryBitMask == PhysicsCategory.darkBlock) && (secondBody.categoryBitMask == PhysicsCategory.player)) {
             
             darkBlockCollision(firstBody.node as! SKSpriteNode, darkBlockTemp: secondBody.node as! SKSpriteNode)
         }
-        if ((firstBody.categoryBitMask == physicsCategory.player) && (secondBody.categoryBitMask == physicsCategory.lightBlock) || (firstBody.categoryBitMask == physicsCategory.lightBlock) && (secondBody.categoryBitMask == physicsCategory.player)) {
+        if ((firstBody.categoryBitMask == PhysicsCategory.player) && (secondBody.categoryBitMask == PhysicsCategory.lightBlock) || (firstBody.categoryBitMask == PhysicsCategory.lightBlock) && (secondBody.categoryBitMask == PhysicsCategory.player)) {
             
             lightBlockCollision(firstBody.node as! SKSpriteNode, lightBlockTemp: secondBody.node as! SKSpriteNode)
         }
@@ -302,7 +299,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.runAction(sequence)
     }
     
-    struct physicsCategory {
+    struct PhysicsCategory {
         static let player : UInt32 = 1
         static let darkBlock : UInt32 = 2
         static let lightBlock : UInt32 = 3
